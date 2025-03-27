@@ -24,7 +24,6 @@ import { getFileInfo, getFileType, resolveHtmlPath } from './util';
 import './sqlite';
 import Downloader from './downloader';
 import { Embedder } from './embedder';
-import initCrashReporter from '../CrashReporter';
 import { encrypt, decrypt } from './crypt';
 import ModuleContext from './mcp';
 import Knowledge from './knowledge';
@@ -59,6 +58,9 @@ if (!gotTheLock) {
 
 const mcp = new ModuleContext();
 const store = new Store();
+let downloader: Downloader;
+let mainWindow: BrowserWindow | null = null;
+const protocol = app.isPackaged ? 'app.5ire' : 'app.5ire.dev';
 
 class AppUpdater {
   constructor() {
@@ -129,9 +131,6 @@ class AppUpdater {
     autoUpdater.checkForUpdates();
   }
 }
-let downloader: Downloader;
-let mainWindow: BrowserWindow | null = null;
-const protocol = app.isPackaged ? 'app.5ire' : 'app.5ire.dev';
 
 // IPCs
 ipcMain.on('ipc-5ire', async (event) => {
@@ -297,37 +296,36 @@ ipcMain.handle('select-knowledge-files', async () => {
         },
       ],
     });
+    
     if (result.filePaths.length > 20) {
       dialog.showErrorBox('Error', 'Please not more than 20 files a time.');
       return '[]';
     }
-    const files = [];
-    for (const filePath of result.filePaths) {
+
+    const processFile = async (filePath: string) => {
       const fileType = await getFileType(filePath);
       if (!SUPPORTED_FILE_TYPES[fileType]) {
-        dialog.showErrorBox(
-          'Error',
-          `Unsupported file type ${fileType} for ${filePath}`,
-        );
-        return '[]';
+        throw new Error(`Unsupported file type ${fileType} for ${filePath}`);
       }
       const fileInfo: any = await getFileInfo(filePath);
       if (fileInfo.size > MAX_FILE_SIZE) {
-        dialog.showErrorBox(
-          'Error',
-          `the size of ${filePath} exceeds the limit (${
-            MAX_FILE_SIZE / (1024 * 1024)
-          } MB})`,
-        );
-        return '[]';
+        throw new Error(`The size of ${filePath} exceeds the limit (${MAX_FILE_SIZE / (1024 * 1024)} MB})`);
       }
       fileInfo.type = fileType;
-      files.push(fileInfo);
+      return fileInfo;
+    };
+
+    try {
+      const files = await Promise.all(result.filePaths.map(processFile));
+      logging.debug(files);
+      return JSON.stringify(files);
+    } catch (error: any) {
+      dialog.showErrorBox('Error', error.message);
+      return '[]';
     }
-    logging.debug(files);
-    return JSON.stringify(files);
   } catch (err: any) {
     logging.captureException(err);
+    return '[]';
   }
 });
 
@@ -383,16 +381,16 @@ ipcMain.handle(
   },
 );
 ipcMain.handle('remove-knowledge-file', async (_, fileId: string) => {
-  return await Knowledge.remove({ fileId });
+  return Knowledge.remove({ fileId });
 });
 ipcMain.handle(
   'remove-knowledge-collection',
   async (_, collectionId: string) => {
-    return await Knowledge.remove({ collectionId });
+    return Knowledge.remove({ collectionId });
   },
 );
 ipcMain.handle('get-knowledge-chunk', async (_, chunkId: string) => {
-  return await Knowledge.getChunk(chunkId);
+  return Knowledge.getChunk(chunkId);
 });
 ipcMain.handle('download', (_, fileName: string, url: string) => {
   downloader.download(fileName, url);
@@ -403,40 +401,44 @@ ipcMain.handle('cancel-download', (_, fileName: string) => {
 
 /** mcp */
 ipcMain.handle('mcp-init', async () => {
-  mcp.init().then(async () => {
+  return mcp.init().then(async () => {
     // https://github.com/sindresorhus/fix-path
     logging.info('mcp initialized');
     await mcp.load();
     mainWindow?.webContents.send('mcp-server-loaded', mcp.getClientNames());
+    return true;
+  }).catch(err => {
+    logging.captureException(err);
+    return false;
   });
 });
 ipcMain.handle('mcp-add-server', async (_, config) => {
-  return await mcp.addServer(config);
+  return mcp.addServer(config);
 });
 ipcMain.handle('mcp-update-server', async (_, config) => {
-  return await mcp.updateServer(config);
+  return mcp.updateServer(config);
 });
 ipcMain.handle('mcp-activate', async (_, config) => {
-  return await mcp.activate(config);
+  return mcp.activate(config);
 });
 ipcMain.handle('mcp-deactivate', async (_, clientName: string) => {
-  return await mcp.deactivate(clientName);
+  return mcp.deactivate(clientName);
 });
 ipcMain.handle('mcp-list-tools', async (_, name: string) => {
-  return await mcp.listTools(name);
+  return mcp.listTools(name);
 });
 ipcMain.handle(
   'mcp-call-tool',
   async (_, args: { client: string; name: string; args: any }) => {
-    return await mcp.callTool(args);
+    return mcp.callTool(args);
   },
 );
 ipcMain.handle('mcp-get-config', async () => {
-  return await mcp.getConfig();
+  return mcp.getConfig();
 });
 
 ipcMain.handle('mcp-put-config', async (_, config) => {
-  return await mcp.putConfig(config);
+  return mcp.putConfig(config);
 });
 ipcMain.handle('mcp-get-active-servers', () => {
   return mcp.getClientNames();
@@ -586,7 +588,7 @@ app
     });
 
     app.on('will-finish-launching', () => {
-      initCrashReporter();
+      // initCrashReporter();
     });
 
     app.on('window-all-closed', () => {
@@ -647,6 +649,6 @@ process.on('uncaughtException', (error) => {
   logging.captureException(error);
 });
 
-process.on('unhandledRejection', (reason: any, promise) => {
+process.on('unhandledRejection', (reason: any) => {
   logging.captureException(reason);
 });

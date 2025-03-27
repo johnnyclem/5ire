@@ -115,6 +115,8 @@ const configuration: webpack.Configuration = {
       NODE_ENV: 'production',
       DEBUG_PROD: 'false',
       START_MINIMIZED: 'false',
+      SUPA_PROJECT_ID: process.env.SUPA_PROJECT_ID,
+      SUPA_KEY: process.env.SUPA_KEY,
     }),
 
     new MiniCssExtractPlugin({

@@ -1,29 +1,13 @@
-import * as Sentry from '@sentry/electron/renderer';
-import { init as reactInit } from '@sentry/react';
-
 export function init() {
-  if (window.envVars.SENTRY_DSN && window.envVars.NODE_ENV !== 'development') {
-    Sentry.init(
-      {
-        dsn: window.envVars.SENTRY_DSN,
-      },
-      reactInit,
-    );
-  }
+  // Initialization removed as Sentry is no longer used
 }
 
 export function captureException(error: Error | string) {
   console.error(error);
-  if (window.envVars.SENTRY_DSN && window.envVars.NODE_ENV !== 'development') {
-    Sentry.captureException(error);
-  }
 }
 
 export function captureWarning(warning: any) {
   console.warn(warning);
-  if (window.envVars.SENTRY_DSN && window.envVars.NODE_ENV !== 'development') {
-    Sentry.captureMessage(warning, 'warning');
-  }
 }
 
 export function debug(...messages: any[]) {

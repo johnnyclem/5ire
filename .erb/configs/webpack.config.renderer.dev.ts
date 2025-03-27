@@ -46,7 +46,7 @@ const configuration: webpack.Configuration = {
   target: ['web', 'electron-renderer'],
 
   entry: [
-    `webpack-dev-server/client?http://localhost:${port}/dist`,
+    `webpack-dev-server/client?http://localhost:${port}/`,
     'webpack/hot/only-dev-server',
     path.join(webpackPaths.srcRendererPath, 'index.tsx'),
   ],
@@ -141,6 +141,8 @@ const configuration: webpack.Configuration = {
      */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+      SUPA_PROJECT_ID: process.env.SUPA_PROJECT_ID,
+      SUPA_KEY: process.env.SUPA_KEY,
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -175,9 +177,11 @@ const configuration: webpack.Configuration = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     static: {
       publicPath: '/',
+      directory: webpackPaths.distRendererPath,
     },
     historyApiFallback: {
       verbose: true,
+      rewrites: [{ from: /^\//, to: '/index.html' }],
     },
     setupMiddlewares(middlewares) {
       console.log('Starting preload.js builder...');

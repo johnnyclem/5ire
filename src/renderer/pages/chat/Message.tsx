@@ -23,7 +23,7 @@ import {
 import MessageToolbar from './MessageToolbar';
 import useMermaid from '../../../hooks/useMermaid';
 
-const debug = Debug('5ire:pages:chat:Message');
+const debug = Debug('souls:pages:chat:Message');
 
 export default function Message({ message }: { message: IChatMessage }) {
   const { t } = useTranslation();

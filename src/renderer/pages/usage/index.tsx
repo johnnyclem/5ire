@@ -12,7 +12,7 @@ import { date2unix } from 'utils/util';
 import Grid from './Grid';
 import { ProviderType } from '../../../providers/types';
 
-const debug = Debug('5ire:pages:usage');
+const debug = Debug('souls:pages:usage');
 
 const onFormatDate = (date?: Date): string => {
   return !date

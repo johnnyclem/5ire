@@ -13,10 +13,10 @@ import './App.scss';
 import './fluentui.scss';
 
 if (window.envVars.NODE_ENV === 'development') {
-  Debug.enable('5ire:*');
+  Debug.enable('souls:*');
 }
 
-const debug = Debug('5ire:App');
+const debug = Debug('souls:App');
 
 logging.init();
 

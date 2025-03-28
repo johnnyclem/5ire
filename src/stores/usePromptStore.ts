@@ -7,7 +7,7 @@ import { date2unix, sortPrompts } from 'utils/util';
 import { isNotBlank } from 'utils/validators';
 import { create } from 'zustand';
 
-const debug = Debug('5ire:stores:usePromptStore');
+const debug = Debug('souls:stores:usePromptStore');
 
 export interface IPromptStore {
   prompt: IPromptDef | null;

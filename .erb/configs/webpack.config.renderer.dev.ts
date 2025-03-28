@@ -188,7 +188,7 @@ const configuration: webpack.Configuration = {
         .on('close', (code: number) => process.exit(code!))
         .on('error', (spawnError) => console.error(spawnError));
 
-      let args = ['run', 'start:main', 'DEBUG=5ire:*'];
+      let args = ['run', 'start:main', 'DEBUG=Souls:*'];
       if (process.env.MAIN_ARGS) {
         args = args.concat(
           ['--', ...process.env.MAIN_ARGS.matchAll(/"[^"]+"|[^\s"]+/g)].flat()

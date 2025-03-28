@@ -12,7 +12,7 @@ if (process.platform !== 'win32') {
 v8.setFlagsFromString('--max-old-space-size=4096');
 
 export type Channels =
-  | 'ipc-5ire'
+  | 'ipc-souls'
   | 'app-upgrade-start'
   | 'app-upgrade-end'
   | 'app-upgrade-error'

@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { IChatMessage } from '../../intellichat/types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const debug = Debug('5ire:components:SearchDialog');
+const debug = Debug('souls:components:SearchDialog');
 
 interface ISearchResultItem {
   key: string;

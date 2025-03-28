@@ -28,7 +28,7 @@ import { ICollection } from 'types/knowledge';
 import useKnowledgeStore from 'stores/useKnowledgeStore';
 import useChatKnowledgeStore from 'stores/useChatKnowledgeStore';
 
-const debug = Debug('5ire:pages:chat:Editor:Toolbar:KnowledgeCtrl');
+const debug = Debug('souls:pages:chat:Editor:Toolbar:KnowledgeCtrl');
 
 const KnowledgeIcon = bundleIcon(Library20Filled, Library20Regular);
 

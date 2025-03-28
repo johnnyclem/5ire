@@ -18,7 +18,7 @@ import { ITool } from 'intellichat/readers/IChatReader';
 import NextChatService from './NextChatService';
 import INextChatService from './INextCharService';
 
-const debug = Debug('5ire:intellichat:GoogleChatService');
+const debug = Debug('souls:intellichat:GoogleChatService');
 
 const containsImage = (contents: IChatRequestMessage[]): boolean => {
   if (contents?.length) {

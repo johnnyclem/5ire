@@ -4,7 +4,7 @@ import BaseReader from './BaseReader';
 import IChatReader, { ITool, IReadResult } from './IChatReader';
 import OpenAIReader from './OpenAIReader';
 
-const debug = Debug('5ire:intellichat:FireReader');
+const debug = Debug('souls:intellichat:FireReader');
 
 export default class FireReader extends OpenAIReader implements IChatReader {
   protected parseReply(chunk: string): IChatResponseMessage {

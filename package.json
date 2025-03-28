@@ -1,14 +1,14 @@
 {
-  "name": "5ire",
-  "productName": "5ire",
-  "version": "0.9.8",
-  "description": "A Sleek Desktop AI Assistant & MCP Client",
+  "name": "Souls",
+  "productName": "Souls",
+  "version": "0.1.0",
+  "description": "A Personal Desktop AI Agent & MCP Client",
   "main": "src/main/main.ts",
-  "repository": "https://github.com/nanbingxyz/5ire.git",
+  "repository": "https://github.com/johnnyclem/souls.git",
   "author": {
-    "name": "Ironben",
-    "email": "support@5ire.app",
-    "url": "https://5ire.app"
+    "name": "johnnyclem",
+    "email": "support@sou.ls",
+    "url": "https://sou.ls"
   },
   "license": "Apache-2.0",
   "scripts": {
@@ -21,9 +21,9 @@
     "electron:build": "electron-builder build --publish never",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
     "start": "tsx ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
-    "start:main": "cross-env NODE_ENV=development DEBUG=5ire:* NODE_OPTIONS=\"--import tsx\" electronmon .",
-    "start:preload": "cross-env NODE_ENV=development DEBUG=5ire:* webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
-    "start:renderer": "cross-env NODE_ENV=development DEBUG=5ire:* webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
+    "start:main": "cross-env NODE_ENV=development DEBUG=souls:* NODE_OPTIONS=\"--import tsx\" electronmon .",
+    "start:preload": "cross-env NODE_ENV=development DEBUG=souls:* webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
+    "start:renderer": "cross-env NODE_ENV=development DEBUG=souls:* webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
     "test": "jest",
     "prepare": "husky"
   },
@@ -218,8 +218,8 @@
     "zustand": "^4.3.9"
   },
   "build": {
-    "productName": "5ire",
-    "appId": "app.5ire.desktop",
+    "productName": "Souls",
+    "appId": "app.souls.desktop",
     "compression": "maximum",
     "asar": true,
     "asarUnpack": [
@@ -227,9 +227,9 @@
     ],
     "protocols": [
       {
-        "name": "5ire-deep-linking",
+        "name": "souls-deep-linking",
         "schemes": [
-          "app5ire"
+          "appsouls"
         ]
       }
     ],

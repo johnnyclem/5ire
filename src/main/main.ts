@@ -65,7 +65,7 @@ class AppUpdater {
     autoUpdater.forceDevUpdateConfig = true;
     autoUpdater.setFeedURL({
       provider: 'generic',
-      url: 'https://github.com/nanbingxyz/5ire/releases/latest/download/',
+      url: 'https://github.com/nanbingxyz/souls/releases/latest/download/',
     });
 
     autoUpdater.on('update-available', (info: any) => {
@@ -131,11 +131,11 @@ class AppUpdater {
 }
 let downloader: Downloader;
 let mainWindow: BrowserWindow | null = null;
-const protocol = app.isPackaged ? 'app.5ire' : 'app.5ire.dev';
+const protocol = app.isPackaged ? 'app.souls' : 'app.souls.dev';
 
 // IPCs
-ipcMain.on('ipc-5ire', async (event) => {
-  event.reply('ipc-5ire', {
+ipcMain.on('ipc-souls', async (event) => {
+  event.reply('ipc-souls', {
     darkMode: nativeTheme.shouldUseDarkColors,
   });
 });
@@ -569,7 +569,7 @@ if (app.dock) {
   app.dock.setIcon(dockIcon);
 }
 
-app.setName('5ire');
+app.setName('souls');
 
 app
   .whenReady()

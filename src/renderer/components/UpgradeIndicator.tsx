@@ -78,7 +78,7 @@ export default function UpgradeIndicator() {
               </DialogTrigger>
               <Button
                 appearance="primary"
-                onClick={() => window.electron.openExternal('https://5ire.app')}
+                onClick={() => window.electron.openExternal('https://sou.ls')}
               >
                 {t('Common.Action.GoWebsite')}
               </Button>

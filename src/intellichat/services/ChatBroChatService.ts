@@ -10,7 +10,7 @@ import ChatBro from '../../providers/ChatBro';
 import INextChatService from './INextCharService';
 import OpenAIChatService from './OpenAIChatService';
 
-const debug = Debug('5ire:intellichat:ChatBroChatService');
+const debug = Debug('souls:intellichat:ChatBroChatService');
 
 export default class ChatBroChatService
   extends OpenAIChatService

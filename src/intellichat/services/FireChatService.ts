@@ -12,7 +12,7 @@ import { urlJoin } from 'utils/util';
 import INextChatService from './INextCharService';
 import OpenAIChatService from './OpenAIChatService';
 
-const debug = Debug('5ire:intellichat:FireChatService');
+const debug = Debug('souls:intellichat:FireChatService');
 
 export default class FireChatService
   extends OpenAIChatService

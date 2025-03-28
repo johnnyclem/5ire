@@ -10,7 +10,7 @@ export type ProviderType =
   | 'Ollama'
   | 'LMStudio'
   | 'ChatBro'
-  | '5ire'
+  | 'souls'
   | 'Doubao'
   | 'Grok';
 

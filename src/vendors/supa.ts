@@ -3,7 +3,7 @@ import Debug from 'debug';
 import { createClient } from '@supabase/supabase-js';
 import { captureException } from '../renderer/logging';
 
-const debug = Debug('5ire:vendors:supa');
+const debug = Debug('souls:vendors:supa');
 
 const supabase = createClient(
   `https://${window.envVars.SUPA_PROJECT_ID}.supabase.co`,

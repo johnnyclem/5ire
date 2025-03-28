@@ -27,7 +27,7 @@ import StateButton from 'renderer/components/StateButton';
 import StateInput from 'renderer/components/StateInput';
 import MaskableStateInput from 'renderer/components/MaskableStateInput';
 
-const debug = Debug('5ire:pages:user:Register');
+const debug = Debug('souls:pages:user:Register');
 
 export default function Register() {
   const { t } = useTranslation();

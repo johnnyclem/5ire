@@ -39,7 +39,7 @@ export default function createService(
       return new OllamaChatService(chatCtx);
     case 'ChatBro':
       return new ChatBroChatService(chatCtx);
-    case '5ire':
+    case 'souls':
       return new FireChatService(chatCtx);
     case 'Doubao':
       return new DoubaoChatService(chatCtx);

@@ -19,7 +19,7 @@ import {
 import { fmtDateTime } from 'utils/util';
 import { captureException } from '../../logging';
 
-const debug = Debug('5ire:pages:user:TabSubscription');
+const debug = Debug('souls:pages:user:TabSubscription');
 
 export default function TabSubscription() {
   const { notifyError, notifyInfo, notifySuccess } = useToast();
@@ -251,7 +251,7 @@ export default function TabSubscription() {
               <button
                 className="underline p-0"
                 onClick={() =>
-                  window.electron.openExternal('https://5ire.app/redeem-code')
+                  window.electron.openExternal('https://sou.ls/redeem-code')
                 }
               >
                 {t('Subscription.HowToGetRedeemCode')}

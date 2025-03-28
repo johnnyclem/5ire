@@ -11,7 +11,7 @@ import { IChat, IChatContext, IChatMessage, IPrompt } from 'intellichat/types';
 import { IChatModel } from 'providers/types';
 import useProvider from './useProvider';
 
-const debug = Debug('5ire:hooks:useChatContext');
+const debug = Debug('souls:hooks:useChatContext');
 
 export default function useChatContext(): IChatContext {
   const { getProvider: getChatProvider, getChatModel } = useProvider();

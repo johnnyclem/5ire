@@ -29,7 +29,7 @@ export const providers: { [key: string]: IServiceProvider } = {
   Doubao,
   DeepSeek,
   LMStudio,
-  '5ire': Fire,
+  'souls': Fire,
 };
 
 export function getProvider(providerName: ProviderType): IServiceProvider {

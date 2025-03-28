@@ -16,7 +16,7 @@ import useInspectorStore from 'stores/useInspectorStore';
 import useSettingsStore from 'stores/useSettingsStore';
 import { raiseError, stripHtmlTags } from 'utils/util';
 
-const debug = Debug('5ire:intellichat:NextChatService');
+const debug = Debug('souls:intellichat:NextChatService');
 
 export default abstract class NextCharService {
   abortController: AbortController;

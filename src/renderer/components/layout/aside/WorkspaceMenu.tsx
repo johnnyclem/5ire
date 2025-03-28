@@ -29,7 +29,7 @@ import { useEffect, useState } from 'react';
 import useToast from 'hooks/useToast';
 import useAuthStore from 'stores/useAuthStore';
 
-const debug = Debug('5ire:components:layout:aside:WorkspaceMenu');
+const debug = Debug('souls:components:layout:aside:WorkspaceMenu');
 
 const FireIcon = bundleIcon(Fire24Filled, Fire24Regular);
 

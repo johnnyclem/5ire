@@ -27,17 +27,17 @@ export default function Footer({ collapsed }: { collapsed: boolean }) {
   }, []);
 
   const goHome = useCallback(() => {
-    window.electron.openExternal('https://5ire.app');
+    window.electron.openExternal('https://sou.ls');
     window.electron.ingestEvent([{ app: 'go-homepage' }]);
   }, []);
 
   const goDocs = useCallback(() => {
-    window.electron.openExternal('https://5ire.app/docs');
+    window.electron.openExternal('https://sou.ls/docs');
     window.electron.ingestEvent([{ app: 'go-docs' }]);
   }, []);
 
   const goGitHub = useCallback(() => {
-    window.electron.openExternal('https://github.com/nanbingxyz/5ire');
+    window.electron.openExternal('https://github.com/nanbingxyz/souls');
     window.electron.ingestEvent([{ app: 'go-github' }]);
   }, []);
 

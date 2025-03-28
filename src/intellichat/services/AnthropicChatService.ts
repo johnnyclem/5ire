@@ -17,7 +17,7 @@ import INextChatService from './INextCharService';
 import NextChatService from './NextChatService';
 import Anthropic from '../../providers/Anthropic';
 
-const debug = Debug('5ire:intellichat:AnthropicChatService');
+const debug = Debug('souls:intellichat:AnthropicChatService');
 
 export default class AnthropicChatService
   extends NextChatService

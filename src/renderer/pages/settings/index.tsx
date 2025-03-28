@@ -33,7 +33,7 @@ import APISettings from './APISettings';
 import EmbedSettings from './EmbedSettings';
 import LanguageSettings from './LanguageSettings';
 
-const debug = Debug('5ire:pages:settings:index');
+const debug = Debug('souls:pages:settings:index');
 
 const CloudArrowUpIcon = bundleIcon(
   CloudArrowUp24Filled,

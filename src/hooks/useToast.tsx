@@ -17,7 +17,7 @@ const DismissIcon = bundleIcon(Dismiss16Filled, Dismiss16Regular);
 
 export default function useToast() {
   const { dispatchToast, dismissToast } = useToastController('toaster');
-  const toastId = useId('5ire');
+  const toastId = useId('souls');
   const $notify = ({
     title,
     message,

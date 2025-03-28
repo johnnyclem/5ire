@@ -40,7 +40,7 @@ import useInspectorStore from 'stores/useInspectorStore';
 import Sidebar from './Sidebar/Sidebar';
 import CitationDialog from './CitationDialog';
 
-const debug = Debug('5ire:pages:chat');
+const debug = Debug('souls:pages:chat');
 
 const MemoizedMessages = React.memo(Messages);
 

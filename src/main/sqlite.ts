@@ -5,7 +5,7 @@ import path from 'path';
 import * as logging from './logging';
 import { isOneDimensionalArray } from '../utils/util';
 
-const dbPath = path.join(app.getPath('userData'), '5ire.db');
+const dbPath = path.join(app.getPath('userData'), 'souls.db');
 const database = new Database(dbPath);
 
 function createTableFolders() {

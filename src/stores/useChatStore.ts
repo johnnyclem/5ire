@@ -26,7 +26,7 @@ import { getProvider } from 'providers';
 import useSettingsStore from './useSettingsStore';
 import { captureException } from '../renderer/logging';
 
-const debug = Debug('5ire:stores:useChatStore');
+const debug = Debug('souls:stores:useChatStore');
 
 const defaultTempStage = {
   model: '',

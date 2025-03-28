@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide provides detailed instructions for installing all prerequisites required to run 5ire.
+This guide provides detailed instructions for installing all prerequisites required to run Souls.
 
 ## Python Installation
 

@@ -49,14 +49,14 @@ describe('mcp', () => {
   });
 
   test('fillArgs', () => {
-    const params = { "dbPath": 'path/to/db', "dbName": '5ire' } as unknown as MCPArgParameter;
+    const params = { "dbPath": 'path/to/db', "dbName": 'souls' } as unknown as MCPArgParameter;
     const args1 = ['--db-path', '{{dbPath@string::database path}}'];
     const newArgs1 = mcp.fillArgs(args1, params);
     expect(newArgs1).toEqual(['--db-path', 'path/to/db']);
 
     const args2 = ['--db-path', '{{dbPath@string::}}', '--db-name', '{{dbName@string}}'];
     const newArgs2 = mcp.fillArgs(args2, params);
-    expect(newArgs2).toEqual(['--db-path', 'path/to/db', '--db-name', '5ire']);
+    expect(newArgs2).toEqual(['--db-path', 'path/to/db', '--db-name', 'souls']);
 
     const params3 = {
       dirs: ['path/1','path/2','path/3'],

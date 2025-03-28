@@ -23,7 +23,7 @@ import { useTranslation } from 'react-i18next';
 import { debounce } from 'lodash';
 import { isPersistedChat } from 'utils/util';
 
-const debug = Debug('5ire:pages:chat:ChatSettingsDrawer');
+const debug = Debug('souls:pages:chat:ChatSettingsDrawer');
 
 export default function ChatSettingsDrawer({
   open,

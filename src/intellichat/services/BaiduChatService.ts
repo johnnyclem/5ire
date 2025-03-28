@@ -5,7 +5,7 @@ import { IChatContext, IChatRequestMessage } from '../types';
 import INextChatService from './INextCharService';
 import OpenAIChatService from './OpenAIChatService';
 
-const debug = Debug('5ire:intellichat:BaiduChatService');
+const debug = Debug('souls:intellichat:BaiduChatService');
 
 function formatDateToISO(date: Date): string {
   return `${date.toISOString().split('.')[0]}Z`;

@@ -30,7 +30,7 @@ import Prompts from '../pages/prompt';
 import PromptForm from '../pages/prompt/Form';
 import AppLoader from '../apps/Loader';
 
-const debug = Debug('5ire:components:FluentApp');
+const debug = Debug('souls:components:FluentApp');
 
 const fire: BrandVariants = {
   10: '#030303',

@@ -13,7 +13,7 @@ import {
 
 import { FontSize, ThemeType } from '../types/appearance';
 
-const debug = Debug('5ire:stores:useSettingsStore');
+const debug = Debug('souls:stores:useSettingsStore');
 
 const defaultTheme = 'system';
 const defaultLanguage = 'system';

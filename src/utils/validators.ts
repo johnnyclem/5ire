@@ -54,5 +54,7 @@ export function isValidHttpHRL(url: string) {
 
 // containing only letters (can be both cases) and numbers, and can't start with a digit.
 export function isValidMCPServerKey(key: string) {
-  return /^[a-zA-Z][a-zA-Z0-9]*$/.test(key);
+  const pattern =
+    /^https:\/\/(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}(?::\d+)?(?:\/[^\s]*)?$/;
+  return pattern.test(key);
 }

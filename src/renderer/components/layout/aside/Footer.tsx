@@ -37,7 +37,7 @@ export default function Footer({ collapsed }: { collapsed: boolean }) {
   }, []);
 
   const goGitHub = useCallback(() => {
-    window.electron.openExternal('https://github.com/nanbingxyz/souls');
+    window.electron.openExternal('https://github.com/johnnyclem/souls');
     window.electron.ingestEvent([{ app: 'go-github' }]);
   }, []);
 
@@ -64,30 +64,7 @@ export default function Footer({ collapsed }: { collapsed: boolean }) {
         collapsed ? 'flex-col' : ''
       }`}
     >
-      <button
-        data-canny-changelog
-        type="button"
-        className={`flex items-center gap-x-1 rounded-md px-2 py-2 text-xs font-medium text-brand-secondary outline-none hover:bg-brand-surface-1 hover:text-brand-base ${
-          collapsed ? 'w-full justify-center' : ''
-        }`}
-        title="Changelog"
-        aria-label="changelog"
-      >
-        <Alert20Regular />
-      </button>
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
-          <button
-            type="button"
-            className={`flex items-center gap-x-1 rounded-md px-2 py-2 text-xs font-medium text-brand-secondary outline-none hover:bg-brand-surface-1 hover:text-brand-base ${
-              collapsed ? 'w-full justify-center' : ''
-            }`}
-            title={t('Common.Help')}
-          >
-            <QuestionCircle20Regular />
-            {collapsed ? '' : <span>{t('Common.Help')}</span>}
-          </button>
-        </MenuTrigger>
         <MenuPopover>
           <MenuList>
             <MenuItem
@@ -177,7 +154,7 @@ export default function Footer({ collapsed }: { collapsed: boolean }) {
         </MenuPopover>
       </Menu>
 
-      <button
+      {/* <button
         type="button"
         title="Mod+t"
         className={`hidden items-center gap-3 rounded-md px-2 py-2 text-xs font-medium outline-none hover:bg-brand-surface-1 hover:text-brand-base md:flex ${
@@ -186,7 +163,7 @@ export default function Footer({ collapsed }: { collapsed: boolean }) {
         onClick={() => toggleSidebarCollapsed()}
       >
         {collapsed ? <ArrowRight16Regular /> : <ArrowLeft16Regular />}
-      </button>
+      </button> */}
       <div className="relative" />
     </div>
   );

@@ -157,13 +157,13 @@ export default class MenuBuilder {
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('https://sou.ls');
+            shell.openExternal('https://sou.ls/learn-more');
           },
         },
         {
           label: 'Community Discussions',
           click() {
-            shell.openExternal('https://souls.canny.io/');
+            shell.openExternal('https://sou.ls/community');
           },
         },
       ],

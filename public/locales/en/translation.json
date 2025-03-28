@@ -237,6 +237,7 @@
   "Tools.Edit": "Edit tool",
   "Tools.Key": "Tool Key",
   "Tools.KeyHint": "The tool's key must be unique, containing only letters (both cases) and numbers, and can't start with a digit.",
+  "Tools.SSE": "MCP sse url",
   "Common.Description": "Description",
   "Tools.Command": "Command",
   "Tools.EnvVars": "Enviroment Variables",

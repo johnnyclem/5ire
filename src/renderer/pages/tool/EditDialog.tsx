@@ -178,7 +178,7 @@ export default function ToolEditDialog(options: {
             >
               {server ? t('Tools.Edit') : t('Tools.New')}
             </DialogTitle>
-            <DialogContent className="flex flex-col gap-4">
+            {/* <DialogContent className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Field
@@ -346,7 +346,155 @@ export default function ToolEditDialog(options: {
                   />
                 </Field>
               </div>
+            </DialogContent> */}
+            <DialogContent className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Field label={t('Tools.Name')}>
+                    <Input
+                      className="w-full min-w-fit"
+                      placeholder={t('Common.Optional')}
+                      value={name}
+                      onChange={(
+                        _: ChangeEvent<HTMLInputElement>,
+                        data: InputOnChangeData,
+                      ) => {
+                        setName(data.value);
+                      }}
+                    />
+                  </Field>
+                </div>
+                <div>
+                  <Field
+                    label={t('Tools.SSE')}
+                    validationState={keyValidationState}
+                    validationMessage={
+                      server ? t('Tools.KeyCannotUpdate') : t('Tools.KeyHint')
+                    }
+                  >
+                    <Input
+                      disabled={!!server}
+                      className="w-full min-w-fit"
+                      placeholder={t('Common.Required')}
+                      value={key}
+                      onChange={(
+                        _: ChangeEvent<HTMLInputElement>,
+                        data: InputOnChangeData,
+                      ) => {
+                        setKey(data.value);
+                        if (!data.value || isValidMCPServerKey(data.value)) {
+                          setKeyValidationState('none');
+                        } else {
+                          setKeyValidationState('error');
+                        }
+                      }}
+                    />
+                  </Field>
+                </div>
+              </div>
+              <div>
+                <Field label={t('Common.Description')}>
+                  <Input
+                    className="w-full min-w-fit"
+                    placeholder={t('Common.Optional')}
+                    value={description}
+                    onChange={(
+                      _: ChangeEvent<HTMLInputElement>,
+                      data: InputOnChangeData,
+                    ) => {
+                      setDescription(data.value);
+                    }}
+                  />
+                </Field>
+              </div>
+              <div>
+                <Field label={t('Tools.EnvVars')}>
+                  <div className="bg-gray-50 dark:bg-neutral-800 border rounded border-base">
+                    <div className="flex flex-start items-center border-b border-base px-1 py-1">
+                      <div className="w-5/12">{t('Common.EnvName')}</div>
+                      <div className="w-6/12">{t('Common.EnvValue')}</div>
+                      <div />
+                    </div>
+                    <div className="flex flex-start items-center border-b border-base px-1 p-1">
+                      <div className="w-5/12 px-1">
+                        <Input
+                          className="w-full"
+                          size="small"
+                          value={envName || ''}
+                          onChange={(
+                            _: ChangeEvent<HTMLInputElement>,
+                            data: InputOnChangeData,
+                          ) => {
+                            setEnvName(data.value);
+                          }}
+                        />
+                      </div>
+                      <div className="w-6/12 px-1">
+                        <Input
+                          className="w-full"
+                          size="small"
+                          value={envValue || ''}
+                          onChange={(
+                            _: ChangeEvent<HTMLInputElement>,
+                            data: InputOnChangeData,
+                          ) => {
+                            setEnvValue(data.value);
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <Button
+                          appearance="subtle"
+                          onClick={addEnv}
+                          icon={<AddCircleRegular />}
+                          size="small"
+                        />
+                      </div>
+                    </div>
+                    <div className="overflow-y-auto min-h-6 max-h-40 flex flex-col">
+                      {Object.keys(env).map((envKey: string) => (
+                        <div
+                          key={envKey}
+                          className="flex flex-start items-center [&:not(:last-child)]:border-b w-full px-1"
+                        >
+                          <div className="w-5/12 px-2 text-xs overflow-hidden text-nowrap truncate">
+                            {envKey}
+                          </div>
+                          <div className="w-6/12 px-2 text-xs overflow-hidden text-nowrap truncate">
+                            {env[envKey]}
+                          </div>
+                          <div>
+                            <Button
+                              appearance="subtle"
+                              icon={<SubtractCircleRegular />}
+                              size="small"
+                              onClick={() => {
+                                const newEnv = { ...env };
+                                delete newEnv[envKey];
+                                setEnv(newEnv);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Field>
+              </div>
+              <div>
+                <Field label={t('Tools.ConfigPreview')} hint="in JSON format">
+                  <div
+                    className="border rounded border-base text-xs"
+                    dangerouslySetInnerHTML={{
+                      __html: render(
+                        `\`\`\`json\n${JSON.stringify(config, null, 2)}\n\`\`\``,
+                      ),
+                    }}
+                  />
+                </Field>
+              </div>
             </DialogContent>
+
             <DialogActions>
               <Button appearance="subtle" onClick={() => setOpen(false)}>
                 {t('Common.Cancel')}

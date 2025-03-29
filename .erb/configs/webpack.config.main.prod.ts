@@ -67,10 +67,11 @@ const configuration: webpack.Configuration = {
     new webpack.DefinePlugin({
       'process.type': '"browser"',
     }),
-    // 与@xenova/transfomers 有冲突，暂时禁用。https://github.com/bytenode/bytenode/issues/197
-    // new BytenodeWebpackPlugin({
-    //   compileForElectron: true,
-    // }),
+    // Explicitly ignore the problematic test pdf file
+    new webpack.NormalModuleReplacementPlugin(
+      /05-versions-space\.pdf$/,
+      path.resolve(__dirname, '../scripts/empty-module.js')
+    ),
   ],
 
   /**

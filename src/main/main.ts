@@ -13,7 +13,7 @@ import {
   ipcMain,
   nativeTheme,
 } from 'electron';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 import { autoUpdater } from 'electron-updater';
 import { Deeplink } from 'electron-deeplink';
 import Store from 'electron-store';
@@ -57,8 +57,31 @@ if (!gotTheLock) {
 }
 */
 
+// EMERGENCY FIX: Create the test directory and file at runtime to prevent crashes
+try {
+  const testDir = path.join(process.cwd(), 'test', 'data');
+  const testFile = path.join(testDir, '05-versions-space.pdf');
+  
+  // Check if directory exists, if not create it
+  if (!fs.existsSync(testDir)) {
+    logging.info(`Creating test directory: ${testDir}`);
+    fs.mkdirSync(testDir, { recursive: true });
+  }
+  
+  // Check if file exists, if not create it
+  if (!fs.existsSync(testFile)) {
+    logging.info(`Creating mock test file: ${testFile}`);
+    fs.writeFileSync(testFile, 'MOCK PDF CONTENT');
+  }
+} catch (error) {
+  logging.error(`Failed to create test file: ${error}`);
+}
+
 const mcp = new ModuleContext();
 const store = new Store();
+
+// Log that we've imported the patched fs module
+logging.info('Main process started with patched fs module');
 
 class AppUpdater {
   constructor() {

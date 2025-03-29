@@ -1,37 +1,38 @@
 import { merge } from 'lodash';
 import { ProviderType, IChatModel, IServiceProvider } from './types';
-import Azure from './Azure';
-import Baidu from './Baidu';
+// import Azure from './Azure';
+// import Baidu from './Baidu';
 import OpenAI from './OpenAI';
 import Google from './Google';
-import Moonshot from './Moonshot';
-import ChatBro from './ChatBro';
+// import Moonshot from './Moonshot';
+// import ChatBro from './ChatBro';
 import Anthropic from './Anthropic';
-import Fire from './Fire';
+// import Fire from './Fire';
 import Ollama from './Ollama';
 import LMStudio from './LMStudio';
-import Doubao from './Doubao';
-import Grok from './Grok';
-import DeepSeek from './DeepSeek';
-import Mistral from './Mistral';
+// import Doubao from './Doubao';
+// import Grok from './Grok';
+// import DeepSeek from './DeepSeek';
+// import Mistral from './Mistral';
 import VeniceAI from './VeniceAI';
 
 export const providers: { [key: string]: IServiceProvider } = {
+  VeniceAI,
+  Ollama,
+  LMStudio,
   OpenAI,
   Anthropic,
-  Azure,
+  // Azure,
+  // Baidu,
   Google,
-  Grok,
-  Baidu,
-  Mistral,
-  Moonshot,
-  ChatBro,
-  Ollama,
-  Doubao,
-  DeepSeek,
-  LMStudio,
-  souls: Fire,
-  VeniceAI,
+  // Grok,
+  // Baidu,
+  // Mistral,
+  // Moonshot,
+  // ChatBro,
+  // Doubao,
+  // DeepSeek,
+  // souls: Fire,
 };
 
 export function getProvider(providerName: ProviderType): IServiceProvider {

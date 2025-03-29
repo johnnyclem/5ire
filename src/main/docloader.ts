@@ -37,9 +37,18 @@ class OfficeLoader extends BaseLoader {
 
 class PdfLoader extends BaseLoader {
   async read(filePath: fs.PathLike): Promise<string> {
-    const dataBuffer = fs.readFileSync(filePath);
-    const data = await pdf(dataBuffer);
-    return data.text;
+    try {
+      const dataBuffer = fs.readFileSync(filePath);
+      const data = await pdf(dataBuffer);
+      return data.text;
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        // File not found, return empty string instead of crashing
+        logging.info(`PDF file not found: ${filePath}`);
+        return '';
+      }
+      throw error;
+    }
   }
 }
 

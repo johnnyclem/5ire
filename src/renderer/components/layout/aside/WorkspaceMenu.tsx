@@ -114,43 +114,6 @@ export default function WorkspaceMenu({ collapsed }: { collapsed: boolean }) {
           style={{ width: '254px' }}
           data-theme={theme}
         >
-          <Button
-            onClick={navToProfile}
-            appearance="subtle"
-            className="w-full justify-start"
-          >
-            <div className="px-0 py-1.5">
-              {user ? (
-                <div className="flex justify-start flex-nowrap items-center">
-                  <Persona
-                    size="large"
-                    name={user.user_metadata.name}
-                    secondaryText={user.email}
-                    avatar={
-                      <Avatar
-                        aria-label={t('Common.User')}
-                        name={user.user_metadata.name}
-                        color="colorful"
-                        className="mr-2"
-                        shape="square"
-                        size={40}
-                      />
-                    }
-                  />
-                </div>
-              ) : (
-                <div className="flex justify-start flex-nowrap items-center">
-                  <Avatar
-                    aria-label={t('Common.Guest')}
-                    className="mr-2"
-                    shape="square"
-                    size={40}
-                  />
-                  <span>{t('Common.SignIn')}</span>
-                </div>
-              )}
-            </div>
-          </Button>
           <MenuList>
             <MenuDivider className="border-base" />
             <MenuItem

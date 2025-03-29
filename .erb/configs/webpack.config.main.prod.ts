@@ -82,6 +82,21 @@ const configuration: webpack.Configuration = {
     __dirname: false,
     __filename: false,
   },
+
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules|\.test\.tsx?$|test/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+          },
+        },
+      },
+    ],
+  },
 };
 
 export default merge(baseConfig, configuration);

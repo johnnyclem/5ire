@@ -569,7 +569,7 @@ if (app.dock) {
   app.dock.setIcon(dockIcon);
 }
 
-app.setName('souls');
+app.setName('Souls');
 
 app
   .whenReady()

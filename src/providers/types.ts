@@ -12,7 +12,8 @@ export type ProviderType =
   | 'ChatBro'
   | 'souls'
   | 'Doubao'
-  | 'Grok';
+  | 'Grok'
+  | 'VeniceAI';
 
 export interface INumberRange {
   min: number;

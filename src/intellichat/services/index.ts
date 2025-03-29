@@ -14,6 +14,7 @@ import FireChatService from './FireChatService';
 import DoubaoChatService from './DoubaoChatService';
 import GrokChatService from './GrokChatService';
 import DeepSeekChatService from './DeepSeekChatService';
+import VeniceAIChatService from './VeniceAIChatService';
 import INextChatService from './INextCharService';
 
 export default function createService(
@@ -49,6 +50,8 @@ export default function createService(
       return new DeepSeekChatService(chatCtx);
     case 'LMStudio':
       return new LMStudioChatService(chatCtx);
+    case 'VeniceAI':
+      return new VeniceAIChatService(chatCtx);
     default:
       throw new Error(`Invalid provider:${providerName}`);
   }

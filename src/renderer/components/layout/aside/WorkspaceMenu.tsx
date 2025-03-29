@@ -28,10 +28,12 @@ import useNav from 'hooks/useNav';
 import { useEffect, useState } from 'react';
 import useToast from 'hooks/useToast';
 import useAuthStore from 'stores/useAuthStore';
+import Empty from 'renderer/components/Empty';
 
 const debug = Debug('souls:components:layout:aside:WorkspaceMenu');
 
 const FireIcon = bundleIcon(Fire24Filled, Fire24Regular);
+const SoulsIcon = <Empty image="souls_logo" />;
 
 export default function WorkspaceMenu({ collapsed }: { collapsed: boolean }) {
   const { t } = useTranslation();
@@ -81,7 +83,8 @@ export default function WorkspaceMenu({ collapsed }: { collapsed: boolean }) {
         >
           <MenuTrigger disableButtonEnhancement>
             <MenuButton
-              icon={<FireIcon />}
+              icon={SoulsIcon}
+              // icon={<FireIcon />}
               appearance="subtle"
               style={{ borderColor: 'transparent', boxShadow: 'none' }}
               className="w-full justify-start outline-none"

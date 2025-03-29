@@ -14,6 +14,7 @@ import Doubao from './Doubao';
 import Grok from './Grok';
 import DeepSeek from './DeepSeek';
 import Mistral from './Mistral';
+import VeniceAI from './VeniceAI';
 
 export const providers: { [key: string]: IServiceProvider } = {
   OpenAI,
@@ -29,7 +30,8 @@ export const providers: { [key: string]: IServiceProvider } = {
   Doubao,
   DeepSeek,
   LMStudio,
-  'souls': Fire,
+  souls: Fire,
+  VeniceAI,
 };
 
 export function getProvider(providerName: ProviderType): IServiceProvider {

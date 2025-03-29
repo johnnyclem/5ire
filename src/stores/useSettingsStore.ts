@@ -20,10 +20,10 @@ const defaultLanguage = 'system';
 const defaultFontSize = 'base';
 
 const defaultAPI: IAPISettings = {
-  provider: 'OpenAI',
-  base: 'https://api.openai.com',
+  provider: 'VeniceAI',
+  base: 'https://api.venice.ai/api/v1',
   key: '',
-  model: '',
+  model: 'llama-3.3-70b',
 };
 
 const defaultModelMapping: IModelMapping = {};

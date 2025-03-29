@@ -1,6 +1,6 @@
 // VeniceAI.ts
 
-import { IServiceProvider } from './types';
+import { ChatModelGroup, IServiceProvider } from './types';
 
 export default {
   name: 'VeniceAI',
@@ -15,10 +15,19 @@ export default {
     presencePenalty: { min: -2, max: 2, default: 0 },
     topP: { min: 0, max: 1, default: 0.9 },
     temperature: { min: 0, max: 1, default: 0.8 },
+    options: {
+      modelCustomizable: true,
+      streamCustomizable: true,
+    },
     models: {
       'llama-3.3-70b': {
+        name: 'llama-3.3-70b',
         label: 'Llama 3.3 70b',
         contextWindow: 65536,
+        isDefault: true,
+        inputPrice: 0.0004,
+        outputPrice: 0.0012,
+        group: 'Open Source' as ChatModelGroup,
         description:
           'Default model. Function calling enabled. Supports web search.',
         capabilities: {
@@ -42,8 +51,12 @@ export default {
         object: 'model',
       },
       'llama-3.2-3b': {
+        name: 'llama-3.2-3b',
         label: 'Llama 3.2 3b',
         contextWindow: 131072,
+        inputPrice: 0.0001,
+        outputPrice: 0.0003,
+        group: 'Open Source' as ChatModelGroup,
         description:
           'Fastest model available. Supports function calling and response schema.',
         capabilities: {
@@ -67,8 +80,12 @@ export default {
         object: 'model',
       },
       'mistral-31-24b': {
+        name: 'mistral-31-24b',
         label: 'Mistral 31 24b',
         contextWindow: 131072,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Mistral' as ChatModelGroup,
         description:
           'Default vision model. Supports function calling, response schema, and web search.',
         capabilities: {
@@ -93,8 +110,12 @@ export default {
         object: 'model',
       },
       'qwen-2.5-qwq-32b': {
+        name: 'qwen-2.5-qwq-32b',
         label: 'Qwen 2.5 Qwq 32b',
         contextWindow: 32768,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Open Source' as ChatModelGroup,
         description:
           'Optimized for code. Supports response schema, web search, and reasoning.',
         capabilities: {
@@ -118,8 +139,12 @@ export default {
         object: 'model',
       },
       'qwen-2.5-vl': {
+        name: 'qwen-2.5-vl',
         label: 'Qwen 2.5 Vl',
         contextWindow: 32768,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Open Source' as ChatModelGroup,
         description: 'Supports vision and web search.',
         capabilities: {
           optimizedForCode: false,
@@ -142,8 +167,12 @@ export default {
         object: 'model',
       },
       'dolphin-2.9.2-qwen2-72b': {
+        name: 'dolphin-2.9.2-qwen2-72b',
         label: 'Dolphin 2.9.2 Qwen2 72b',
         contextWindow: 32768,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Open Source' as ChatModelGroup,
         description:
           'Most uncensored model. Supports response schema and web search.',
         capabilities: {
@@ -168,8 +197,12 @@ export default {
         object: 'model',
       },
       'llama-3.1-405b': {
+        name: 'llama-3.1-405b',
         label: 'Llama 3.1 405b',
         contextWindow: 65536,
+        inputPrice: 0.0005,
+        outputPrice: 0.0015,
+        group: 'Open Source' as ChatModelGroup,
         description: 'Most intelligent model. Supports web search.',
         capabilities: {
           optimizedForCode: false,
@@ -193,8 +226,12 @@ export default {
         object: 'model',
       },
       'deepseek-r1-671b': {
+        name: 'deepseek-r1-671b',
         label: 'Deepseek R1 671b',
         contextWindow: 131072,
+        inputPrice: 0.0005,
+        outputPrice: 0.0015,
+        group: 'Open Source' as ChatModelGroup,
         description:
           'Default reasoning model. Optimized for code. Supports web search.',
         capabilities: {
@@ -218,8 +255,12 @@ export default {
         object: 'model',
       },
       'qwen-2.5-coder-32b': {
+        name: 'qwen-2.5-coder-32b',
         label: 'Qwen 2.5 Coder 32b',
         contextWindow: 32768,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Open Source' as ChatModelGroup,
         description: 'Default code model. Optimized for code.',
         capabilities: {
           optimizedForCode: true,
@@ -243,8 +284,12 @@ export default {
         object: 'model',
       },
       'deepseek-coder-v2-lite': {
+        name: 'deepseek-coder-v2-lite',
         label: 'Deepseek Coder V2 Lite',
         contextWindow: 131072,
+        inputPrice: 0.0003,
+        outputPrice: 0.0009,
+        group: 'Open Source' as ChatModelGroup,
         description: 'Optimized for code. Supports response schema.',
         capabilities: {
           optimizedForCode: true,
@@ -269,4 +314,4 @@ export default {
       },
     },
   },
-};
+} as IServiceProvider;
